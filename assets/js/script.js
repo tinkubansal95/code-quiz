@@ -127,9 +127,7 @@ function startTime() {
 
 function quizPage(){
     // removes the elements of the main page
-    headerEl.remove();
-    descriptionEl.remove();
-    startQuizEl.remove();
+    removeAllChildNodes(displayPageEl);
 
     // create elemnets for quiz page
     quizEl = document.createElement("h2");
@@ -151,7 +149,7 @@ function quizPage(){
     displayPageEl.append(choice3El);
     displayPageEl.append(choice4El);
     
-    quizNumber = 8;
+    quizNumber = -1;
     displayQuiz();
 }
 
@@ -188,7 +186,7 @@ function validateAnswer(event){
             timerEl.innerHTML = "Time left: "+ secondsLeft;
         }
         setTimeout(function() { 
-            optionClickedEl.style.backgroundColor = 'white'; 
+            optionClickedEl.style.backgroundColor = 'rgb(5, 0, 5)'; 
             if(quizNumber < (quiz.length - 1)){
                 displayQuiz();
             }
@@ -199,29 +197,27 @@ function validateAnswer(event){
             }}, 500);        
     }
     else if(optionClickedEl.matches("button") && optionClickedEl.classList.contains("saveScore")){
+        // remove previous elements
+        scores.push({name: inputInitialsEl.value,
+        score : secondsLeft});
+
+        removeAllChildNodes(displayPageEl);
+
+        timerEl.style.visibility = "hidden";
         displayHighScores();
     }
     else if(optionClickedEl.matches("button") && optionClickedEl.classList.contains("goBack")){
-        headerResultEl.remove();
-        highScoreListEl.remove();
-        goBackEl.remove();
-        clearHighScoreEl.remove();
+        removeAllChildNodes(displayPageEl);
         homePage();
     }
     else if(optionClickedEl.matches("button") && optionClickedEl.classList.contains("clearHighScore")){
         scores = [];
         highScoreListEl.remove();
-    }
-
-    
+    }    
 }
 
 function resultPage(){
-    quizEl.remove();
-    choice1El.remove();
-    choice2El.remove();
-    choice3El.remove();
-    choice4El.remove();
+    removeAllChildNodes(displayPageEl);
 
     headerResultEl = document.createElement("h2");
     headerResultEl.textContent = "All Done!";
@@ -247,16 +243,8 @@ function resultPage(){
 }
 
 function displayHighScores(){
-    // remove previous elements
-    scores.push({name: inputInitialsEl.value,
-                 score : secondsLeft});
-
-    scoreResultEl.remove();
-    enterInitialsEl.remove();
-    inputInitialsEl.remove();
-    saveScoreEl.remove();
-    timerEl.style.visibility = "hidden";
-
+    
+    headerResultEl = document.createElement("h2");
     headerResultEl.textContent = "Highscores";
     highScoreListEl = document.createElement("ul");
     
@@ -281,7 +269,17 @@ function displayHighScores(){
     displayPageEl.append(clearHighScoreEl);
 }
 
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
 homePage();
 
 // event handler for answer selected
 displayPageEl.addEventListener("click",validateAnswer);
+document.querySelector(".scores").addEventListener("click",function(){
+    removeAllChildNodes(displayPageEl);
+    displayHighScores();
+});

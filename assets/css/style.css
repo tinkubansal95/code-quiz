@@ -1,0 +1,12 @@
+button{
+    display: block;
+    padding: 1px;
+    
+    background-color: rgb(5, 0, 5);
+    color : white;
+}
+
+.displayPage{
+    margin: auto;
+    text-align: center;
+}
