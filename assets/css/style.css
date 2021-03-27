@@ -1,12 +1,26 @@
 button{
     display: block;
-    padding: 1px;
+    margin : auto;
+    padding : 10px;
     
     background-color: rgb(5, 0, 5);
     color : white;
 }
 
 .displayPage{
-    margin: auto;
+    margin-bottom: 10px;
     text-align: center;
+}
+
+.scores{
+    border : 2px;
+}
+
+.timeLeft{
+    text-align: center;
+    margin : 10px;
+}
+
+.options{
+    min-width: 250px;
 }

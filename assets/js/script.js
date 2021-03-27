@@ -154,6 +154,7 @@ function quizPage(){
 }
 
 function displayQuiz(){
+    
     quizNumber++;
 
     // enter question and option values in their specific elements
@@ -163,6 +164,7 @@ function displayQuiz(){
     choice3El.innerHTML = quiz[quizNumber].choice3;
     choice4El.innerHTML = quiz[quizNumber].choice4;
 
+    
 }
 
 function validateAnswer(event){
