@@ -10,4 +10,4 @@
 
 ## Screenshot of the website
 
-url(./assets/ScreenShotOFTheWebsite.png)
+![ScreenShot of the Website](assets/images/ScreenShotOFTheWebsite.png)
