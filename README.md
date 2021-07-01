@@ -10,4 +10,4 @@ https://tinkubansal95.github.io/code-quiz/
 
 ## Screenshot of the website
 
-![ScreenShot of the Website](Assets/images/ScreenShotOFTheWebsite.png)
+![ScreenShot of the Website](assets/images/ScreenShotOFTheWebsite.png)
